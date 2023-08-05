@@ -4,6 +4,8 @@ RFXTRX2MQTT is a MQTT bridge driver for the RFXCOM rfxtrx433 RF modem written in
 
 ## Install
 
+First make sure NodeJS is installed. You can install NodeJS on a Raspberry Pi (or on other Debian-like systems) using the instructions here: https://pimylifeup.com/raspberry-pi-node
+
 Clone this repository and run:
 
 `npm install`
