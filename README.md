@@ -1,6 +1,6 @@
 # rfxtrx2mqtt
 
-RFXTRX2MQTT is an MQTT bridge driver for the RFXCOM rfxtrx433 RF modem written in NodeJS and using the NODE-RFXCOM library.
+RFXTRX2MQTT is an MQTT bridge driver for the RFXCOM rfxtrx433 RF modem written in NodeJS and using the node-rfxcom library.
 
 ## Install
 
