@@ -1,0 +1,21 @@
+{
+  "name": "rfxtrx2mqtt",
+  "version": "1.0.0",
+  "description": "RFXCOM rfxtrx433 to MQTT bridge driver",
+  "main": "rfxcom.js",
+  "scripts": {
+    "start": "node rfxcom.js"
+  },
+  "dependencies": {
+    "rfxcom": "^2.5.0",
+    "js-yaml": "^4.1.0",
+    "mqtt": "4.3.7"
+  },
+  "keywords": [
+    "RFXCOM",
+    "RFXTRX",
+    "MQTT"
+  ],
+  "author": "alexarch21",
+  "license": "MIT"
+}
