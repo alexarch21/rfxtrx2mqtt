@@ -1,0 +1,30 @@
+
+serial:
+  port: '/dev/ttyUSB0'
+
+mqtt:
+  server: 'mqtt://192.168.4.100'
+  username: 'user'          # optional, leave empty if no user/pass
+  password: 'password'      # optional, leave empty if no user/pass
+  base_topic: rfxcom        # optional, base MQTT topic
+
+temperaturehumidity1:
+  topic: temp               # optional, topic name for devices using this protocol
+  devices:
+    '0xF501': 'living_room'
+    '0x7402': 'bedroom'
+    '0xB701': 'outdoors'
+
+lighting2:
+  topic: 'switch'           # optional, topic name for devices using this protocol
+  subtype: 'AC'             # The subtype of the protocol used for the transmitter (see the results of device scan)
+  devices:
+    0x015419BE/1: 'light_kitchen'
+    0x015419BE/2: 'light_bedroom'
+    0x015419BE/3: 'light_garden'
+    0x01A20F22/1: 'outlet_1'
+    0x01A20F22/2: 'outlet_2'
+
+lighting5:
+  devices:
+    0xCA0500/2: 'remote_2'
