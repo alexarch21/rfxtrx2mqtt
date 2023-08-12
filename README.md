@@ -18,7 +18,7 @@ The driver is configured using a file called `configuration.yaml` that must be p
 
 To start the driver go into the install directory and run:
 
-`npm start`
+`node ./rfxcom.js`
 
 ## Scanning for RF devices
 
