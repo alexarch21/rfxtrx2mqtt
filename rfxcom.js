@@ -240,7 +240,7 @@ function receiveMessage(topic, message)
             const m = p.devices[i];
             if( m === t[2] ) {
                 const s = message.toString();
-                console.log(` # INFO : ${m} set to ${s}`);
+                loginfo('RFXC', `${m} set to ${s}`);
                 if( ['on', 'On', 'true'].includes(s) ) {
                     p.tx.switchOn(i);
                 } else if( ['off', 'Off', 'false'].includes(s) ) {
