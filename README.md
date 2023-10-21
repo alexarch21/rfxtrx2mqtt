@@ -26,6 +26,10 @@ Calling `node ./rfxcom.js --scan` will scan the 433MHz band for devices with a s
 
 Calling `node ./rfxcom.js --stream` will show a realtime stream of RF devices as they communicate with the RFXCOM. This will also show command names for remote controls and switches, as well as device RSSI.
 
+## MQTT configuration
+
+This is obviously dependent on the home automation platform you are using. Visit [this thread here](https://community.home-assistant.io/t/new-rfxcom-to-mqtt-driver/602091) at the Home Assistant forums for more information about the format of the MQTT topics. While the information is partially Home Assistant specific, the explanations about MQTT topic structure applies to all platforms.
+
 ## Supported devices
 
 TODO. 
