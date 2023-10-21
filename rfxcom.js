@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------
-// RFXTRX 2 MQTT bridge v1.0
+// RFXTRX 2 MQTT bridge v1.1
 // --------------------------------------------------------------------------------------
 
 const rfxcom = require('rfxcom');
@@ -140,7 +140,11 @@ function event_lighting(event, protocol)
     for( let i in config[protocol].devices ) {
         if( i == `${event.id}/${event.unitCode}` ) {
             const m = config[protocol].devices[i];
-            client.publish(`${config.mqtt.base_topic}/${topic}/${m}/state`, event.command);
+            if( event.command !== 'Set Level' ) {
+                client.publish(`${config.mqtt.base_topic}/${topic}/${m}/state`, event.command);
+            } else {
+                client.publish(`${config.mqtt.base_topic}/${topic}/${m}/level`, parseValue(event.level));
+            }
             break;
         }
     }
@@ -241,10 +245,17 @@ function receiveMessage(topic, message)
             if( m === t[2] ) {
                 const s = message.toString();
                 loginfo('RFXC', `${m} set to ${s}`);
-                if( ['on', 'On', 'true'].includes(s) ) {
-                    p.tx.switchOn(i);
-                } else if( ['off', 'Off', 'false'].includes(s) ) {
-                    p.tx.switchOff(i);
+                try {
+                    if( ['on', 'On', 'true'].includes(s) ) {
+                        p.tx.switchOn(i);
+                    } else if( ['off', 'Off', 'false'].includes(s) ) {
+                        p.tx.switchOff(i);
+                    } else {
+                        p.tx.setLevel(i, s * 1);
+                    }
+                }
+                catch( error ) {
+                    logwarn('RFXC', `${error.message}`);
                 }
                 break;
             }
@@ -348,7 +359,7 @@ function readConfig()
 
 function main()
 {
-    console.log(KBLU + '### RFXTRX 2 MQTT bridge V1.0 ###' + KNRM);
+    console.log(KBLU + '### RFXTRX 2 MQTT bridge V1.1 ###' + KNRM);
 
     // Command line args
     let args = readArgumentS();
